@@ -1,0 +1,102 @@
+//1px线
+
+border-1px($color)
+  position: relative
+  &:after
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-top: 1px solid $color
+    content: ''
+
+border-none()
+  &:after
+    display: none
+
+//背景图片
+bg-image($url)
+  background-image: url($url + "@2x.png")
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-aspect-ratio: 3)
+    background-image: url($url + "@3x.png")
+
+//不换行
+no-wrap()
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap
+
+//扩展点击区域
+extent-click()
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    top: -10px
+    left: -10px
+    right: -10px
+    bottom: -10px
+
+//字号自动调整
+font-dpr($font-size)
+  [data-dpr="1"] &
+    font-size: $font-size* 2;
+  /*no*/
+  [data-dpr="2"] &
+    font-size: $font-size* 2;
+  /*no*/
+  [data-dpr="3"] &
+    font-size: $font-size* 3;
+/*no*/
+//$baseFontSize: 75;
+//@function px2rem($px){
+//@return $px/$baseFontSize * 1rem;
+//}
+//@function px2rem2($px){
+//@return px2rem($px*2);
+//}
+
+// 居中, Flex 方式, 兼容性不行
+centerFlex($flex)
+  display: $flex
+  align-items: center
+  justify-content: center
+
+// 居中, CSS3 平移方式, 兼容性不行
+centerTranslate($translate)
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: $translate(-50%, -50%)
+
+// 用 max-width 来防止图片撑破容器
+max-img()
+  display: block
+  max-width: 100%
+  height: auto
+// 多个子项布局
+list($floatLeft, w=25%)
+  float: $floatLeft
+  width: w
+list($inlineBlock, w=25%)
+  display: $inlineBlock
+  width: w
+list(num)
+  flex: num
+  text-align :center
+//panel
+panel($bgcolor=#fff,$padding=0,$margin=10px 0,$height=60px,$txtPadding=0 32px,$color=#333,$fontSize=18px)
+  background: $bgcolor
+  padding: $padding
+  margin: $margin
+  >h4
+    height: $height
+    line-height: $height
+    padding: $txtPadding
+    font-weight :700
+    no-wrap()
+    text-align: center
+    color: $color
+    font-size: $fontSize
+
