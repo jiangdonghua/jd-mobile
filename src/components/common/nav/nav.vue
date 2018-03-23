@@ -60,7 +60,7 @@
         width: 100%
         center()
         .icon
-          font-dpr(14px)
+          font-dpr(16px)
           color: rgba(255, 255, 255, 0.8)
         .tab-link
           display: block
