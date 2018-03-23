@@ -34,7 +34,7 @@
       width 50px
       height:50px
     h4
-      font-size: 10px
+      font-dpr(13px)
       margin-top: 10px
       color: #666
 </style>

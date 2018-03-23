@@ -1,74 +1,87 @@
 <template>
-  <div class="footer">
-    <router-link tag="div" class="tab-item" to="/Home">
-      <div class="center">
-        <i class="icon icon-home"></i>
-        <span class="tab-link">首页</span>
+    <Panel title="公司信息" class="footer">
+      <div slot="panel">
+        <ul class="content">
+            <li>
+                <img src="//img12.360buyimg.com/jrpmobile/jfs/t2842/350/3035567089/14791/5f6ff93d/577cf395N31e76288.png?width=1125&height=252" alt="">
+            </li>
+            <li class="ca">
+                <div>
+                    <img src="//img12.360buyimg.com/jrpmobile/jfs/t2971/333/1297567079/898/f2d2e00d/577dc28dNe5138337.png?width=108&height=108" alt="">
+                    <p>客户端</p>
+                </div>
+                <div>
+                    <img src="//img12.360buyimg.com/jrpmobile/jfs/t2824/256/2966087355/831/188bfa25/577cf3dcN18aadbf2.png?width=108&height=108" alt="">
+                    <p>触屏版</p>
+                </div>
+                <div>
+                    <img src="//img12.360buyimg.com/jrpmobile/jfs/t2920/282/1283157010/1040/23f1430b/577cf3e5N53f740b8.png?width=108&height=108" alt="">
+                    <p>电脑版</p>
+                </div>
+            </li>
+            <li>Copyright © 2004-2017 京东JD.com 版权所有</li>
+            <li>投资有风险，购买需谨慎</li>
+            <li>京东金融平台服务协议</li>
+            <li>京东金融隐私政策</li>
+        </ul>
       </div>
-
-    </router-link>
-    <router-link tag="div" class="tab-item" to="/Classify">
-      <div class="center">
-        <i class="icon icon-classify"></i>
-        <span class="tab-link">分类</span>
-      </div>
-    </router-link>
-    <router-link tag="div" class="tab-item" to="/ShopCar">
-      <div class="center">
-        <i class="icon icon-shopping_cart"></i>
-        <span class="tab-link">购物车</span>
-      </div>
-    </router-link>
-    <router-link tag="div" class="tab-item" to="/UserCenter">
-      <div class="center">
-        <i class="icon icon-user"></i>
-        <span class="tab-link">我的秀</span>
-      </div>
-    </router-link>
-    <router-link tag="div" class="tab-item" to="/More">
-      <div class="center">
-        <i class="icon icon-more"></i>
-        <span class="tab-link">更多</span>
-      </div>
-    </router-link>
-  </div>
+    </Panel>
 </template>
 
-<script type="text/ecmascript-6">
-
-  export default{}
+<script>
+import Panel from "components/common/panel/panel"
+export default {
+    components: {Panel}
+}
 </script>
 
-<style scoped lang="stylus" rel="stylesheet/stylus">
-  @import "~common/stylus/base.styl"
-  @import "~common/stylus/mixin.styl"
+<style coped lang="stylus" rel="stylesheet/stylus">
+  @import "~common/stylus/mixin"
   .footer
-    position: absolute
-    bottom: 0
-    left: 0
-    display: flex
-    height: 70px
-    width: 100%
-
-    .tab-item
-      position: relative
-      background: #484850
-      flex: 1
-      text-align: center
-      border-top: 2px solid #484850
-      .center
+    margin-bottom: 100px
+    &>h4
+      display: none
+    .content
+        background: #F5F5F5
+        centerFlex(flex)
+        flex-direction: row
+        flex-wrap: wrap
         width: 100%
-        center()
-        .icon
-          color: rgba(255, 255, 255, 0.8)
-        .tab-link
-          display: block
-          color: #fff
-          opacity: 0.8
-          padding-top: 5px
-          font-dpr(7px)
+        text-align: center
+        color: #999
+        font-dpr(12px)
+        li
+          width :100%
+          >img
+            width: 100%
+        .ca
+          display: flex
 
-    .tab-item.router-link-active
+          margin-bottom :10px
+          div
+            flex:1
+            width :33.3333%
+            text-align: center
+            box-sizing: border-box
+            padding-top: 20px
+            img
+              width-dpr(45px)
+            p
+              font-dpr(13px)
+              text-align: center
+              display: block
+              color: #999
+              margin-top: 12px
+              white-space: nowrap
+              text-overflow: ellipsis
+              overflow: hidden
+        li:nth-child(n+3)
+          padding: 24px 0
+          height: 38px
+          line-height: 1em
+          border-top: 1px solid #ddd
 
-      border-top: 2px solid #a90506
+
+
+
 </style>

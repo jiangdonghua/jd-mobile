@@ -29,6 +29,7 @@
     text-align: center
     font-size: 0
     background: #484850
+    line-height:50px
     .icon
       display: inline-block
       vertical-align: top
@@ -39,21 +40,21 @@
       background-size: 30px 32px
       margin-top: 9px
       border-radius :50%
+      margin-left:-50px
     .text
       display: inline-block
-      vertical-align: top
-      line-height: 52px
-      font-dpr(9px)
+      margin-top:3px
+      font-dpr(18px)
       color: rgba(255, 255, 255, 0.8)
     .mine
       position: absolute
-      top:0
-      right:0
-      bottom:0
+      right: 12px
+      top:50%
+      transform: translate(0, -50%)
       .icon-user
         display: block
         padding: 12px
-        font-dpr(12px)
+        font-dpr(24px)
         color: rgba(255, 255, 255, 0.8)
 
 

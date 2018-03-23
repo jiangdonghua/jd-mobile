@@ -4,18 +4,20 @@
     <keep-alive>
       <router-view></router-view>
     </keep-alive>
-    <my-footer></my-footer>
+    <my-nav></my-nav>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import MyHeader from 'components/common/header/header.vue'
-  import MyFooter from 'components/common/footer/footer.vue'
+  import MyNav from 'components/common/nav/nav.vue'
+
   export default {
     name: 'app',
     components:{
       MyHeader,
-      MyFooter
+      MyNav,
+
     }
   }
 </script>

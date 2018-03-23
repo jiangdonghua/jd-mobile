@@ -2,6 +2,7 @@
   <section class="panel">
     <h4>- {{title}} -</h4><slot name="more"></slot>
     <slot name="panel"></slot>
+    <slot name="extent"></slot>
   </section>
 </template>
 

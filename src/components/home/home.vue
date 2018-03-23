@@ -31,13 +31,62 @@
         <div slot="panel" class="panel-content">
           <div class="pic-wrapper" ref="picWrapper">
             <ul class="pic-list" ref="picList">
-              <li class="pic-item" v-for="pic in pics">
-                <img :src="pic.src" width="120" height="90">
+              <li class="pic-item" v-for="pic in pics" ref="picItem">
+                <img :src="pic.src">
               </li>
             </ul>
           </div>
         </div>
       </panel>
+      <panel title="保险保障">
+        <div slot="panel" class="panel-content">
+          <div class="pic-wrapper" ref="spicWrapper">
+            <ul class="pic-list" ref="spicList">
+              <li class="pic-item" v-for="pic in safePics" ref="picItem">
+                <img :src="pic.src">
+              </li>
+            </ul>
+          </div>
+          <div class="ad">
+            <img src="//img12.360buyimg.com/jrpmobile/jfs/t15583/348/2209539372/42536/6bae28a8/5a953b19Nd7e46726.jpg?width=750&height=200" alt="">
+          </div>
+        </div>
+      </panel>
+      <panel title="新人特权">
+        <div slot="panel" class="person-content">
+            <div class="item-one">
+              <h4>下载APP <span class="red">送888元礼包</span></h4>
+              <p class="gray">新手专享</p>
+              <img src="//img12.360buyimg.com/jrpmobile/jfs/t10384/155/1759179594/9776/185bd062/59e5f0ebNec4cf494.png?width=100&height=100" alt="">
+            </div>
+            <div class="item-two">
+              <ul>
+                <li>
+                  <img src="//img12.360buyimg.com/jrpmobile/jfs/t4639/162/1782623297/60754/98ea03b4/58e60952N7fdb2b85.png?width=200&height=200" alt="">
+                  <h4 class="red">领128元新手礼包</h4>
+                  <p class="gray">立即开通</p>
+                </li>
+                <li>
+                  <img src="//img12.360buyimg.com/jrpmobile/jfs/t4804/179/657713323/5908/66dce262/58e6095fNd3dc3f39.png?width=100&height=100" alt="">
+                  <h4>打白条<span class="red">享免息</span></h4>
+                  <p class="gray">立即开通享豪礼</p>
+                </li>
+              </ul>
+            </div>
+        </div>
+      </panel>
+      <panel title="有车有钱">
+        <div slot="panel" class="panel-content">
+          <div class="hold car"><img src="//img12.360buyimg.com/jrpmobile/jfs/t17800/224/698056253/28974/d3ad0665/5aa0ec80N348451f8.png?width=375&height=233" alt=""></div>
+          <div class="hold money">
+            <img src="//img12.360buyimg.com/jrpmobile/jfs/t14215/140/1757206721/24186/81b4e53c/5a56c877Nee6cfc4d.jpg?width=375&height=233" alt="">
+          </div>
+        </div>
+        <div slot="extent">
+          <flex-box :enters="holdAll"></flex-box>
+        </div>
+      </panel>
+      <my-footer></my-footer>
     </scroll>
   </div>
 </template>
@@ -50,7 +99,7 @@
   import Scroll from 'components/common/scroll/scroll'
   import flexBox from 'components/common/flexbox/flexbox'
   import Panel from 'components/common/panel/panel'
-
+  import MyFooter from 'components/common/footer/footer.vue'
   export default{
     data(){
       return {
@@ -101,6 +150,27 @@
           img: "//img12.360buyimg.com/jrpmobile/jfs/t5488/298/1036263348/12073/b4f4de97/590ac8e8Ne9def22e.png?width=135&height=135",
           title: "白条提额",
         }],
+        holdAll: [{
+          href: "download",
+          img: "//img12.360buyimg.com/jrpmobile/jfs/t12799/50/704102454/5247/19eac80a/5a4f2622Nc4aca701.png?width=90&height=90",
+          title: "旅游",
+        }, {
+          href: "home",
+          img: "//img12.360buyimg.com/jrpmobile/jfs/t16033/196/1306232362/4705/4c678227/5a4f265bN66ef5ae8.png?width=90&height=90",
+          title: "医美",
+        }, {
+          href: "home",
+          img: "//img12.360buyimg.com/jrpmobile/jfs/t13051/63/2559290659/4702/e4068917/5a4f2693N937f1905.png?width=88&height=88",
+          title: "房抵贷",
+        }, {
+          href: "home",
+          img: "//img12.360buyimg.com/jrpmobile/jfs/t15133/16/1440686097/5786/1b038e03/5a4f26bfN03ed1f66.png?width=90&height=90",
+          title: "驾校",
+        }, {
+          href: "home",
+          img: "//img12.360buyimg.com/jrpmobile/jfs/t14896/125/1435676873/3668/a8b392f7/5a4f26edN6cdfda66.png?width=88&height=88",
+          title: "分期用",
+        }],
         items: [{
           title: "定期理财",
           sub: "90天可质押",
@@ -135,13 +205,29 @@
           href: "home",
           src: "//img12.360buyimg.com/jrpmobile/jfs/t14935/5/2384445307/37843/697e3be2/5a9d0375N91173d42.jpg?width=335&height=421",
         }],
+        safePics: [{
+          href: "home",
+          src: "//img12.360buyimg.com/jrpmobile/jfs/t12355/171/849656870/29064/92c9bc12/5a153643N04efba6e.jpg?width=210&height=260",
+        }, {
+          href: "home",
+          src: "//img12.360buyimg.com/jrpmobile/jfs/t9697/338/291348712/12737/27e1204/59cb6304Naef85042.jpg?width=210&height=260",
+        }, {
+          href: "home",
+          src: "//img12.360buyimg.com/jrpmobile/jfs/t10360/347/311063647/10881/14a5cd40/59cb632fNcac82571.jpg?width=210&height=260",
+        }, {
+          href: "home",
+          src: "//img12.360buyimg.com/jrpmobile/jfs/t13927/226/2090083878/14208/2746192a/5a31dde6Nbba7f26c.png?width=210&height=260",
+        },{
+          href: "home",
+          src: "//img12.360buyimg.com/jrpmobile/jfs/t9703/119/296348375/11253/b9bc3ce7/59cb637dNf25b0dff.jpg?width=210&height=260",
+        }],
       }
     },
     created(){
-      let self = this
       setTimeout(() => {
-        self._getGoods()
-        self._initPics()
+        this._getGoods()
+        this._initPics(this.pics,this.$refs.picItem[0],10,this.$refs.picList,this.$refs.picWrapper)
+        this._initPics(this.safePics,this.$refs.picItem[0],10,this.$refs.spicList,this.$refs.spicWrapper)
       }, 20)
       this.imgsArr = this.initImgsArr(0, 3)
       this.fetchImgsArr = this.initImgsArr(3, 20) // 模拟每次请求的新的图片的数据数据
@@ -170,7 +256,6 @@
 
       },
       searchMore(){
-
       },
       listScroll(){
         this.$emit('listScroll')
@@ -179,13 +264,11 @@
       initImgsArr(n, m) { //num 图片数量
         var arr = []
         getGoods().then((res) => {
-          //this.goodsList = res
           this.goodsList = res
 
           for (var i = n; i < m; i++) {
             arr.push(this.goodsList.splice(n, m))
           }
-          //console.log(this.goodsList.data)
         })
 //        for (var i = n; i < m; i++) {
 //          arr.push({ src: `./static/img/${i + 1}.jpg`, link: 'https://www.baidu.com', info: '一些图片描述文字' })
@@ -196,15 +279,15 @@
       fetchImgsData() {
         this.imgsArr = this.imgsArr.concat(this.fetchImgsArr)
       },
-      _initPics(){
-        if (this.pics) {
-          let picWidth = 125
-          let margin = 10
-          let width1 = (picWidth + margin) * this.pics.length+margin
-          this.$refs.picList.style.width = width1 + 'px'
+      _initPics(resource,picWidth1,margin1,scrollBox,scrollWrapper){
+        if (resource) {
+          let picWidth = picWidth1.offsetWidth
+          let margin = margin1
+          let width1 = (picWidth + margin) * resource.length-margin
+          scrollBox.style.width = width1 + 'px'
           if (!this.picScroll) {
             this.$nextTick(() => {
-              this.picScroll = new BScroll(this.$refs.picWrapper, {
+              this.picScroll = new BScroll(scrollWrapper, {
                 scrollX: true,
                 eventPassthrough: 'vertical'
               })
@@ -220,7 +303,8 @@
       Slider,
       Scroll,
       flexBox,
-      Panel
+      Panel,
+      MyFooter
     }
   }
 </script>
@@ -260,12 +344,12 @@
           &:before
             display: none
         dt
-          font-dpr(8px)
+          font-dpr(15px)
           padding: 10px 0
           color: #333
 
           span
-            font-dpr(5px)
+            font-dpr(11px)
             margin-left: 4px
             color: #ff5155
             border: 1px solid #ff5155
@@ -279,27 +363,88 @@
         dd
           &:nth-child(2)
             font-weight: 700
-            font-dpr(11px)
+            font-dpr(22px)
             color: #ff5155
             no-wrap()
             margin-bottom 5px
           &:nth-child(3)
-            font-dpr(6px)
+            font-dpr(12px)
             color: #999
             padding: 2px 0
             no-wrap()
       .pic-wrapper
         no-wrap()
         width: 100%
-        padding: 0 16px
+        margin-left: 16px
+        margin-right:16px
         .pic-list
           font-size: 0
+
           .pic-item
             display: inline-block
-            margin-right: 6px
+            margin-right: 10px
+            width-dpr(125px)
             img
-              width: 125px
+              display: block
+              width:100%
               height: auto
+
+      .ad
+        margin :20px 0
+        img
+          width :100%
+      .hold
+        list(1)
+        width :50%
+        img
+          width :100%
+    .person-content
+      centerFlex(flex)
+      flex-direction: row
+      &>div
+        list(1)
+      .item-one
+        padding:0 5px 10px 5px
+        text-align :center
+        border-right:1px solid #ddd
+        overflow: hidden
+        h4
+          margin-top :28px
+        img
+          width: 80px
+          height: 80px
+          margin:10px 0
+      h4
+        font-dpr(14px)
+        margin-bottom :10px
+      .red
+        color: #f00
+      .gray
+        color: #999
+        font-dpr(14px)
+      p
+        font-dpr(14px)
+      .item-two
+        padding:0 5px 10px 5px
+        ul
+          width:100%
+          li
+            width: 100%
+            padding:24px 14px 20px 14px
+            text-align :left
+            box-sizing: border-box
+            &:first-child
+              border-bottom :1px solid #ddd
+            h4
+              no-wrap()
+              line-height:1em
+              margin-top: 4px
+            img
+              width: 40px
+              height: 40px
+              float: right
+              vertical-align :middle
+
     .arrow
       no-wrap()
       max-width: 40%;
