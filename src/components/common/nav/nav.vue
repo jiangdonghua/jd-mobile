@@ -7,7 +7,7 @@
       </div>
 
     </router-link>
-    <router-link tag="div" class="tab-item" to="/Classify">
+    <router-link tag="div" class="tab-item" to="/Classify/">
       <div class="center">
         <i class="icon icon-classify"></i>
         <span class="tab-link">分类</span>

@@ -14,6 +14,7 @@ if ('addEventListener' in document) {
     fastClick.attach(document.body);
   }, false);
 }
+
 Vue.use(VueLazyLoad,{
   loading:require('common/image/run.png')
 })
@@ -25,5 +26,8 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  data:{
+    eventHub:new Vue()//使用集中的事件处理器，一劳永逸的在任何组件调用事件发射。接收的方法
+  }
 })

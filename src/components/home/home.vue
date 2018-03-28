@@ -459,6 +459,4 @@
       position: absolute
       top: 0
       right: 0
-      .IJ
-        display: block
 </style>
