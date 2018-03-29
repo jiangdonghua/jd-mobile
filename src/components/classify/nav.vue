@@ -20,7 +20,8 @@
     data(){
       return {
         classItem: {},
-        currentIndex: 0
+        currentIndex: 0,
+        zoom: 0
       }
     },
     created(){
@@ -94,16 +95,16 @@
       _getClass(){
         getClass().then((res) => {
           this.classItem = res
-          this._initPics(this.classItem, document.querySelector(".icon-item"), 10, this.$refs.navList, this.$refs.navWrapper)
+          this._initPics(this.classItem, document.querySelector(".icon-item"), 0, this.$refs.navList, this.$refs.navWrapper)
         })
       },
-      _initPics(resource, picWidth1, margin1, scrollBox, scrollWrapper){
 
+      _initPics(resource, picWidth1, margin1, scrollBox, scrollWrapper){
         if (resource && picWidth1) {
           let picWidth = picWidth1.getBoundingClientRect().width
           console.log(picWidth)
           let margin = margin1
-          let width1 = (picWidth + margin) * resource.length + 64
+          let width1 = (picWidth + margin) * resource.length
           scrollBox.style.width = width1 + 'px'
           if (!this.picScroll) {
             this.$nextTick(() => {
@@ -111,16 +112,22 @@
                 scrollX: true,
                 eventPassthrough: 'vertical'
               })
+              this._slideTo(this.currentIndex)
             })
           } else {
             this.picScroll.refresh()
+            //this._slideTo(this.currentIndex)
+
           }
+
         }
+
       },
       _initPages(){
         this.currentIndex = this.$route.path === '/classify/tab_1' ? 0 : this.$route.path === '/classify/tab_2' ? 1 : this.$route.path === '/classify/tab_3' ? 2 : this.$route.path === '/classify/tab_4' ? 3 : this.$route.path === 'classify/tab_5' ? 4 : this.$route.path === 'classify/tab_6' ? 5 : this.$route.path === '/classify/tab_7' ? 6 : this.$route.path === '/classify/tab_8' ? 7 : this.$route.path === '/classify/tab_9' ? 8 : this.$route.path === '/classify/tab_10' ? 9 : this.$route.path === '/classify/tab_11' ? 10 : this.$route.path === '/classify/tab_12' ? 11 : this.$route.path === '/classify/tab_13' ? 12 : 0;
-        this.$root.eventHub.$emit('changeTab', this.currentIndex)
 
+        this.$root.eventHub.$emit('changeTab', this.currentIndex)
+       // console.log(this.picScroll)
       },
       //点击切换
       selectCategory(index, event){
@@ -129,21 +136,26 @@
 //        }
         this.currentIndex = index
         //击导航按钮时向swiper组件发射index
-        this.$root.eventHub.$emit('changeTab',index)
+        this.$root.eventHub.$emit('changeTab', index)
       },
       slideTab(index){
-          console.log("接受的index",index,this.currentIndex)
-        this.currentIndex=index
-        if(this.currentIndex<8){
-          this.picScroll.scrollTo(this.currentIndex*(-document.querySelector(".icon-item").offsetWidth),0)
-        }
-
         let router = new VueRouter();
         let href = index === 0 ? 'classify/tab_1' : index === 1 ? 'classify/tab_2' : index === 2 ? 'classify/tab_3' : index === 3 ? 'classify/tab_4' : index === 4 ? 'classify/tab_5' : index === 5 ? 'classify/tab_6' : index === 6 ? 'classify/tab_7' : index === 7 ? 'classify/tab_8' : index === 8 ? 'classify/tab_9' : index === 9 ? 'classify/tab_10' : index === 10 ? 'classify/tab_11' : index === 11 ? 'classify/tab_12' : index === 12 ? 'classify/tab_13' : 'classify/tab_1';
         // 利用路由的push方法更新路径地址
         router.push(href)
+        this.currentIndex = index
+        console.log("接受的index", index, this.currentIndex)
+        this._slideTo(this.currentIndex)
       },
-
+      //nav
+      _slideTo(index){
+        var w = document.documentElement.clientWidth || document.body.clientWidth
+        var w1 = document.querySelector(".icon-item").offsetWidth
+        let zoom
+        zoom = -index * (parseInt(w1 - w / this.classItem.length) + 2.5)
+        this.picScroll.scrollTo(zoom, 0)
+        this.picScroll.refresh()
+      },
     },
     watch: {
       '$route'(to, from){
@@ -164,14 +176,16 @@
       box-sizing: border-box
       .nav-list
         font-size: 0
-        padding:10px
-        display :table
+        display: table
+        transform-origin: 0% 0%
         .icon-item
           display: inline-block
-          margin-right: 10px /*no*/
-          text-align :center
-          width-dpr(40px) /*no*/
+          padding: 10px; /*no*/
+          text-align: center
+          width-dpr(40px)
           font-dpr(24px)
+          i
+            display: block
           &.current
             color: red
           &:last-child

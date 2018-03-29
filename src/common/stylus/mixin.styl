@@ -57,6 +57,11 @@ font-dpr($font-size)
 //@function px2rem2($px){
 //@return px2rem($px*2);
 //}
+marginR($marginR)
+  /*no*/
+  [data-dpr="3"] &
+    margin-right :$marginR; /* no*/
+
 //宽度自动调整
 width-dpr($width)
   /*no*/
@@ -68,7 +73,7 @@ width-dpr($width)
   /*no*/
   [data-dpr="3"] &
    width: $width*3;/* no*/
-// 居中, Flex 方式, 兼容性不行
+// 居中, Flex 方式
 centerFlex($flex)
   display: $flex
   align-items: center

@@ -62,7 +62,7 @@
           // 左右滑动时将当前slide的索引发送到nav组件
             this.$root.eventHub.$emit('slideTab',mySwiper.activeIndex)
         });
-        //console.log(this.$route.path)
+//        console.log(this.$route.path=== '/classify/tab_13')
         this.$root.eventHub.$on('changeTab',(index)=>{
             mySwiper.slideTo(index,300,false)
         })
